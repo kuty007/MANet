@@ -253,7 +253,7 @@ def anisotropic_gaussian_kernel_matlab(l, sig1, sig2, theta, tensor=False):
     pos = np.dstack((y, x))
     k = scipy.stats.multivariate_normal.pdf(pos, mean=[0, 0], cov=cov)
 
-    k[k < scipy.finfo(float).eps * k.max()] = 0
+    k[k < np.finfo(float).eps * k.max()] = 0
     sumk = k.sum()
     if sumk != 0:
         k = k/sumk
